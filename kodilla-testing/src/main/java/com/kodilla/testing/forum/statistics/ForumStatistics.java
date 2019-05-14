@@ -1,6 +1,7 @@
 package com.kodilla.testing.forum.statistics;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ForumStatistics {
@@ -41,21 +42,23 @@ public class ForumStatistics {
         return averageCommentsAmountPerPost;
     }
 
-    void calculateAdvStatistics(Statistics statistics) {
+    public List<Double> calculateAdvStatistics (Statistics statistics) {
 
-        int usersAmount = statistics.usersNames().size();
-        int postsAmount = statistics.postsCount();
-        int commentsAmount = statistics.commentsCount();
+        double usersAmount = statistics.usersNames().size();
+        double postsAmount = statistics.postsCount();
+        double commentsAmount = statistics.commentsCount();
         double averagePostAmountPerUser = statistics.postsCount() / statistics.usersNames().size();
         double averageCommentsAmountPerUser = statistics.commentsCount() / statistics.usersNames().size();
         double averageCommentsAmountPerPost = statistics.commentsCount() / statistics.postsCount();
 
-        /*statisticsList.add(usersAmount);
-        statisticsList.add(postsAmount);
-        statisticsList.add(commentsAmount);
-        statisticsList.add(averagePostAmountPerUser);
-        statisticsList.add(averageCommentsAmountPerUser);
-        statisticsList.add(averageCommentsAmountPerPost);*/
+        List<Double> calculateAdvStatistics = new ArrayList<>();
+        calculateAdvStatistics.add(usersAmount);
+        calculateAdvStatistics.add(postsAmount);
+        calculateAdvStatistics.add(commentsAmount);
+        calculateAdvStatistics.add(averagePostAmountPerUser);
+        calculateAdvStatistics.add(averageCommentsAmountPerUser);
+        calculateAdvStatistics.add(averageCommentsAmountPerPost);
+        return calculateAdvStatistics;
     }
 
 

@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -29,9 +30,10 @@ public class StatisticsTestSuit {
         double averageAmountOfCommentsPerUserTest = forumStatistics.getAverageCommentsAmountPerUser();
         double averageAmountOfCommentsPerPost = forumStatistics.getAverageCommentsAmountPerPost();
 
+
         //Then
         Assert.assertEquals(1.3, averageAmountOfPostsPerUserTest, 0.001);
         Assert.assertEquals(1.3, averageAmountOfCommentsPerUserTest, 0.001);
-        Assert.assertEquals(1, averageAmountOfCommentsPerPost, .001);
+        Assert.assertEquals(1.0, averageAmountOfCommentsPerPost, .001);
     }
 }

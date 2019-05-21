@@ -1,5 +1,6 @@
 package com.kodilla.testing.forum.statistics;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,30 +11,51 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class StatisticsTestSuit {
+    @After
+    public void after(){
+        System.out.println("Test Case: end");
+            }
     @Test
-    public void testGetAveragePostAmount0PerUser0() {
-
+    public void testCalculateAdvStatisticsWhenPostsOComments120UsersO() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
+
+        List<String> testUsers = new ArrayList<String>();
+        when(statisticsMock.usersNames()).thenReturn(testUsers);
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(120);
+
         ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
-        int postsAmountTest = 130;
-        int commentsAmountTest = 130;
-        ArrayList<String> userList = new ArrayList<String>();
-        for (int i = 0; i < 100; i++) {
-            userList.add("user");
-        }
-        when(statisticsMock.postsCount()).thenReturn(postsAmountTest);
-        when(statisticsMock.usersNames()).thenReturn(userList);
-        when(statisticsMock.commentsCount()).thenReturn(commentsAmountTest);
+
         //When
-        double averageAmountOfPostsPerUserTest = forumStatistics.getAveragePostsAmountPerUser();
-        double averageAmountOfCommentsPerUserTest = forumStatistics.getAverageCommentsAmountPerUser();
-        double averageAmountOfCommentsPerPost = forumStatistics.getAverageCommentsAmountPerPost();
-
-
+        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.showStatistics();
         //Then
-        Assert.assertEquals(1.3, averageAmountOfPostsPerUserTest, 0.001);
-        Assert.assertEquals(1.3, averageAmountOfCommentsPerUserTest, 0.001);
-        Assert.assertEquals(1.0, averageAmountOfCommentsPerPost, .001);
+        Assert.assertEquals(0, forumStatistics.averagePostsPerUser, 0.001);
     }
+
+    @Test
+    public void testCalculateAdvStatisticsWhenPost20Comments20User100() {
+        //Given
+        Statistics statisticsMock = mock(Statistics.class);
+
+        ArrayList<String> testUser = new ArrayList<String>();
+        for (int i = 0; i < 100; i++) {
+            testUser.add("user");
+        }
+
+        when(statisticsMock.usersNames()).thenReturn(testUser);
+        when(statisticsMock.postsCount()).thenReturn(20);
+        when(statisticsMock.commentsCount()).thenReturn(120);
+
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+
+        //When
+        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.showStatistics();
+        //Then
+        Assert.assertEquals(0, forumStatistics.averagePostsPerUser, 0.001);
+    }
+
+
 }

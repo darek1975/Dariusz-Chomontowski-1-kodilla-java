@@ -12,9 +12,10 @@ import static org.mockito.Mockito.when;
 
 public class StatisticsTestSuit {
     @After
-    public void after(){
+    public void after() {
         System.out.println("Test Case: end");
-            }
+    }
+
     @Test
     public void testCalculateAdvStatisticsWhenPostsOComments120UsersO() {
         //Given
@@ -35,7 +36,7 @@ public class StatisticsTestSuit {
     }
 
     @Test
-    public void testCalculateAdvStatisticsWhenPost20Comments20User100() {
+    public void testCalculateAdvStatisticsWhenPost20Comments120User100() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
 
@@ -54,8 +55,30 @@ public class StatisticsTestSuit {
         forumStatistics.calculateAdvStatistics(statisticsMock);
         forumStatistics.showStatistics();
         //Then
-        Assert.assertEquals(0, forumStatistics.averagePostsPerUser, 0.001);
+        Assert.assertEquals(0.2, forumStatistics.averagePostsPerUser, 0.001);
     }
 
+    @Test
+    public void testCalculateAdvStatisticsWhenPost200Comments120User100() {
+        //Given
+        Statistics statisticsMock = mock(Statistics.class);
 
+        ArrayList<String> testUser = new ArrayList<String>();
+        for (int i = 0; i < 100; i++) {
+            testUser.add("user");
+        }
+
+        when(statisticsMock.usersNames()).thenReturn(testUser);
+        when(statisticsMock.postsCount()).thenReturn(200);
+        when(statisticsMock.commentsCount()).thenReturn(120);
+
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+
+        //When
+        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.showStatistics();
+        //Then
+        Assert.assertEquals(2.0, forumStatistics.averagePostsPerUser, 0.001);
+
+    }
 }

@@ -17,23 +17,27 @@ public class ForumStatistics {
         this.statistics = statistics;
     }
 
+
     void calculateAdvStatistics(Statistics statistics) {
         commentsAmount = statistics.commentsCount();
         postsAmount = statistics.postsCount();
         usersAmount = statistics.usersNames().size();
+        double postsCount = postsAmount;
+        double commentsCount = commentsAmount;
+        double userCount = usersAmount;
 
         if (statistics.usersNames().size()!=0) {
-            averagePostsPerUser = statistics.postsCount() / statistics.usersNames().size();
+            averagePostsPerUser = postsCount / userCount;
         } else {
             averagePostsPerUser = 0;
         }
         if (statistics.usersNames().size()!=0) {
-            averageCommentsPerUser = statistics.commentsCount() / statistics.usersNames().size();
+            averageCommentsPerUser = commentsCount / userCount;
         } else {
             averageCommentsPerUser = 0;
         }
         if (statistics.postsCount()!=0) {
-            averageCommentsPerPost = statistics.commentsCount() / statistics.postsCount();
+            averageCommentsPerPost = commentsCount / postsCount;
         } else {
             averageCommentsPerPost = 0;
         }

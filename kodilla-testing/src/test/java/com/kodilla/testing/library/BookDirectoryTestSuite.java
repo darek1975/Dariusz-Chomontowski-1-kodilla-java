@@ -91,7 +91,7 @@ public class BookDirectoryTestSuite {
         when(libraryDatabaseMock.listBooksInHandsOf(anyObject())).thenReturn(resultListOfBorrowedBooks);
 
         //When
-        LibraryUser selectedLibraryUser = new LibraryUser("Mariusz", "Zieliński", "75093254234");
+        LibraryUser selectedLibraryUser = new LibraryUser("Marek", "Zieliński", "75093254234");
         List<Book> theListOf0Books = bookLibrary.listBooksInHandsOf(selectedLibraryUser);
 
         //Then
@@ -106,7 +106,7 @@ public class BookDirectoryTestSuite {
         when(libraryDatabaseMock.listBooksInHandsOf(anyObject())).thenReturn(resultListOfBorrowedBooks);
 
         //When
-        LibraryUser selectedLibraryUser = new LibraryUser("Mariusz", "Zieliński", "75093254234");
+        LibraryUser selectedLibraryUser = new LibraryUser("Marek", "Zieliński", "75093254234");
         List<Book> theListOf1Book = bookLibrary.listBooksInHandsOf(selectedLibraryUser);
 
         //Then
@@ -122,7 +122,7 @@ public class BookDirectoryTestSuite {
         when(libraryDatabaseMock.listBooksInHandsOf(anyObject())).thenReturn(resultListOfBorrowedBooks);
 
         //When
-        LibraryUser selectedLibraryUser = new LibraryUser("Mariusz", "Zieliński", "75093254234");
+        LibraryUser selectedLibraryUser = new LibraryUser("Marek", "Zieliński", "75093254234");
         List<Book> theListOf1Book = bookLibrary.listBooksInHandsOf(selectedLibraryUser);
 
         //Then

@@ -38,4 +38,5 @@ public class BoardTestSuite {
         Assert.assertEquals(inProgressTask, readInProgressTask);
         Assert.assertEquals(doneTask, readDoneTask);
     }
+
 }

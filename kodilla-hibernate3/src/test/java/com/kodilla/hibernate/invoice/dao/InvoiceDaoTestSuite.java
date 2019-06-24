@@ -45,11 +45,12 @@ public class InvoiceDaoTestSuite {
         //When
         invoiceDao.save(invoice);
         int invoiceId = invoice.getId();
-
+        int itemsSize = invoice.getItems().size();
 
         //Then
         Assert.assertNotEquals(0, invoiceId);
-
+        Assert.assertEquals(3, itemsSize);
+        Assert.assertEquals(1, invoiceDao.count());
 
         //CleanUp
         invoiceDao.deleteById(invoiceId);
